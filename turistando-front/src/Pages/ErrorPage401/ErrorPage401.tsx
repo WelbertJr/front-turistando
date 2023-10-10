@@ -5,8 +5,15 @@ import { useNavigate } from "react-router-dom";
 
 export const ErrorPage401 = () => {
   const navigate = useNavigate();
+
   const handleNavigation = () => {
-    navigate("/adminLogin");
+    const currentSearch = window.location.search;
+
+    if (currentSearch.includes("from=/loggedPage")) {
+      navigate("/login");
+    } else {
+      navigate("/adminLogin");
+    }
   };
   return (
     <S.Container>

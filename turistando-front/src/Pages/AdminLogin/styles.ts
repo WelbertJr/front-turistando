@@ -5,8 +5,8 @@ export const Container = styled.div`
   display: flex;
   width: 50%;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
   background-color: ${theme.colors.turistandoWhite};
   span {
     font-family: ${theme.font.family.comfortaa};
@@ -23,7 +23,6 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   width: 35rem;
-  margin-top: 5rem;
   p {
     font-family: ${theme.font.family.merriweather};
     font-weight: ${theme.font.weight.regular};
@@ -36,6 +35,7 @@ export const Form = styled.form`
     font-weight: ${theme.font.weight.bold};
     font-size: ${theme.font.sizes.xxlarge};
     margin-bottom: ${theme.spacings.xlarge};
+    text-align: center;
   }
   a {
     font-family: ${theme.font.family.comfortaa};

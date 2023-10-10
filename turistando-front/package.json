@@ -2,9 +2,9 @@
   "name": "turistando-front",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
+    "test": "vitest",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
@@ -12,11 +12,19 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.47.0",
     "react-icons": "^4.10.1",
     "react-router-dom": "^6.15.0",
     "styled-components": "^6.0.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.22.20",
+    "@babel/preset-react": "^7.22.15",
+    "@testing-library/jest-dom": "^6.1.3",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.5.1",
+    "@types/jest": "^29.5.5",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@types/styled-components": "^5.1.26",
@@ -26,7 +34,10 @@
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jsdom": "^22.1.0",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vitest": "^0.34.6"
   }
 }

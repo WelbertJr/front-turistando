@@ -5,8 +5,8 @@ export const Container = styled.div`
   display: flex;
   width: 50%;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
   background-color: ${theme.colors.turistandoBlue};
   @media (max-width: 999px) {
     width: 100%;
@@ -32,6 +32,9 @@ export const Form = styled.form`
     font-size: ${theme.font.sizes.xxlarge};
     margin-bottom: ${theme.spacings.xlarge};
     color: ${theme.colors.turistandoWhite};
+    @media (max-width: 340px) {
+      font-size: ${theme.font.sizes.large};
+    }
   }
 
   @media (max-width: 999px) {

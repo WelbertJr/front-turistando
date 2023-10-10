@@ -9,6 +9,18 @@ ${() => css`
     outline: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: gray;
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: #ffffff;
+    }
   }
 
   html {
@@ -17,7 +29,7 @@ ${() => css`
 
   html,
   body {
-    max-width: 1920px;
+    max-width: 100vw;
     margin: 0 auto;
   }
 

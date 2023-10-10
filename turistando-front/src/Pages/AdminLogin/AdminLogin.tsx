@@ -1,40 +1,53 @@
 import * as S from "./styles";
+import { useForm, Controller } from "react-hook-form";
 import { Image } from "../../micros/Imagem/Image";
 import { Header } from "../../components/Header/Header";
 import { Input } from "../../micros/Inputs/Inputs";
 import { Button } from "../../micros/Buttons/Buttons";
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthenticationContext } from "../../utils/contexts/isAuthenticated";
+import { FormAdminLogin } from "./types";
 
 export const AdminLogin = () => {
   const navigate = useNavigate();
   const authContext = useContext(AuthenticationContext);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { handleSubmit, control, getValues } = useForm<FormAdminLogin>({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    mode: "onTouched",
+  });
 
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newEmail = e.target.value;
-    console.log(`Novo valor do email: ${newEmail}`);
-    setEmail(newEmail); // Atualize o estado com o novo valor
-  };
+  const handleLogin = (data: FormAdminLogin) => {
+    if (
+      data.email &&
+      data.password &&
+      data.email.trim() !== "" &&
+      data.password.trim() !== ""
+    ) {
+      sessionStorage.setItem("email", data.email);
+      sessionStorage.setItem("password", data.password);
 
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newPassword = e.target.value;
-    console.log(`Nova senha: ${newPassword}`);
-    setPassword(newPassword); // Atualize o estado com a nova senha
-  };
-
-  const handleLogin = () => {
-    sessionStorage.setItem("email", email);
-    sessionStorage.setItem("password", password);
-
-    if (authContext) {
-      authContext.setUser({ email, password });
-      navigate("/adminPage");
+      if (authContext) {
+        const email = getValues("email");
+        const password = getValues("password");
+        authContext.setUser({ email, password });
+        navigate("/adminPage");
+      }
+    } else {
+      console.error("Por favor, preencha ambos email e senha.");
     }
   };
+
+  const onSubmit = async (data: FormAdminLogin) => {
+    //const payload ={}
+    handleLogin(data);
+    console.log("Valores enviados:", data);
+  };
+
   return (
     <>
       <Header headerLinkInicio="Início" headerLinkAdmin={null} />
@@ -45,25 +58,43 @@ export const AdminLogin = () => {
           id="ImageAdmin"
         />
         <S.Container>
-          <S.Form onSubmit={handleLogin}>
+          <S.Form onSubmit={handleSubmit(onSubmit)}>
             <h1>Login de administradores</h1>
             <p>Não é um administrador?</p>
             <a href="/login">Clique aqui para logar</a>
-            <Input
-              type="email"
-              textPlaceholder="Ex: turistando@mail.com"
-              id="E-mail"
-              value={email}
-              onChange={handleEmailChange}
+            <Controller
+              control={control}
+              name="email"
+              rules={{}}
+              render={({ field: { name, onChange, onBlur, value } }) => (
+                <Input
+                  type="email"
+                  textPlaceholder="Ex: turistando@mail.com"
+                  id="E-mail"
+                  name={name}
+                  value={value}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                />
+              )}
             />
-            <Input
-              type="password"
-              textPlaceholder="usuario1"
-              id="Senha"
-              value={password}
-              onChange={handlePasswordChange}
+            <Controller
+              control={control}
+              name="password"
+              rules={{}}
+              render={({ field: { name, onChange, onBlur, value } }) => (
+                <Input
+                  type="password"
+                  textPlaceholder="usuario1"
+                  id="Senha"
+                  name={name}
+                  value={value}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                />
+              )}
             />
-            <Button type="submit" placeholder="Entrar" />
+            <Button type="submit" placeholder="Entrar" mb="0" />
           </S.Form>
         </S.Container>
       </div>

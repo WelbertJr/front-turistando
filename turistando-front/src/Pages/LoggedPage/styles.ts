@@ -17,28 +17,31 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  p {
+    color: ${theme.colors.turistandoYellow};
+    font-size: ${theme.font.sizes.big};
+    font-family: ${theme.font.family.roboto};
+    font-weight: ${theme.font.weight.bold};
+    transition: 0.3s;
+    margin-bottom: ${theme.spacings.large};
+    @media (max-width: 430px) {
+      font-size: ${theme.font.sizes.xlarge};
+    }
+  }
   @media (max-width: 830px) {
     width: 80%;
   }
 `;
 
-export const ContainerCloseIcon = styled.div`
-  display: flex;
-  @media (max-width: 555px) {
-    order: -1;
-    width: 100%;
-    justify-content: flex-end;
-  }
-`;
-
 export const Card = styled.div`
   max-width: 70%;
-  height: 50rem;
+  height: 90%;
   background-color: ${theme.colors.turistandoTertiary05};
   border-radius: 1rem;
   border: 2px solid rgb(0, 56, 103);
   display: flex;
   align-items: center;
+  flex-direction: column;
   margin: auto;
   padding: 0 1%;
   font-family: ${theme.font.family.roboto};
@@ -47,32 +50,56 @@ export const Card = styled.div`
     max-width: 90%;
   }
   @media (max-width: 555px) {
-    flex-direction: column;
     padding: 2% 1%;
     gap: 2%;
+    align-items: flex-end;
   }
   svg {
     height: 3rem;
     width: 3rem;
     cursor: pointer;
-    margin-bottom: 45rem;
     @media (max-width: 555px) {
       margin-bottom: 0;
-    }
-
-    @keyframes setShowResults {
-      from {
-        opacity: 0;
-        width: 0;
-      }
-      to {
-        opacity: 1;
-        width: 30rem;
-      }
+      order: -1;
     }
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
+  }
+`;
+
+export const ContainerCardIcons = styled.div`
+  display: flex;
+  width: 100%;
+  gap: 2%;
+  justify-content: flex-end;
+  margin-top: 2%;
+  @media (max-width: 555px) {
+    width: fit-content;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 4%;
+  }
+`;
+
+export const ContainerCardContent = styled.div`
+  display: flex;
+  overflow: auto;
+  gap: 4%;
+  @media (max-width: 555px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+`;
+
+export const SaveIcon = styled.div`
+  @media (max-width: 555px) {
+    margin-right: 1%;
+    margin-top: 10%;
+  }
+  &:hover {
+    transform: scale(1.05);
   }
 `;
 

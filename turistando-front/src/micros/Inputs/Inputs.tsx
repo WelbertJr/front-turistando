@@ -8,10 +8,12 @@ export const Input = ({
   id,
   color = "turistandoBlack",
   value,
+  name,
   onChange,
+  onBlur,
 }: InputsProps) => {
   return (
-    <>
+    <S.ContainerInput>
       <S.Label htmlFor={id} style={{ color: `${theme.colors[color!]}` }}>
         {id}
       </S.Label>
@@ -20,8 +22,10 @@ export const Input = ({
         placeholder={textPlaceholder}
         id={id}
         value={value}
+        name={name}
         onChange={onChange}
+        onBlur={onBlur}
       />
-    </>
+    </S.ContainerInput>
   );
 };

@@ -6,6 +6,7 @@ export interface ImageProps {
     | "ImageLogin"
     | "ImageBackgroundHome"
     | "ImageResult"
+    | "ImageResultItemCarrossel"
     | "ImageAdmin"
     | "ImageError404"
     | "ImageError401";

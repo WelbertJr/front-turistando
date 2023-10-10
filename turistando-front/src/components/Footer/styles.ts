@@ -21,6 +21,9 @@ export const Container = styled.div`
       background-color: #004466;
       transform: scale(1.1);
     }
+    @media (max-width: 638px) {
+      font-size: ${theme.font.sizes.xsmall};
+    }
   }
 
   p {
@@ -29,5 +32,11 @@ export const Container = styled.div`
     font-weight: ${theme.font.weight.bold};
     text-decoration: none;
     color: ${theme.colors.turistandoWhite};
+    @media (max-width: 638px) {
+      font-size: ${theme.font.sizes.xsmall};
+    }
+  }
+  @media (max-width: 370px) {
+    flex-direction: column;
   }
 `;

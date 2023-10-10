@@ -14,7 +14,7 @@ export const Footer = () => {
         src="src/assets/imgs/turistando-icon-footer.png"
         alt="Turistando Icon"
       />
-      <p>@ 2023 Turistando All Rights Reserved.</p>
+      <p>&copy; 2023 Turistando All Rights Reserved.</p>
     </S.Container>
   );
 };

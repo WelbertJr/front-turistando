@@ -11,6 +11,9 @@ export const Image = ({ src, alt, id }: ImageProps) => {
   if (id === "ImageResult") {
     return <S.ImageResult src={src} alt={alt} id={id} />;
   }
+  if (id === "ImageResultItemCarrossel") {
+    return <S.ImageResultItemCarrossel src={src} alt={alt} id={id} />;
+  }
   if (id === "ImageAdmin") {
     return <S.ImageAdmin src={src} alt={alt} id={id} />;
   }

@@ -1,17 +1,18 @@
 import styled from "styled-components";
 import theme from "../../styles/theme";
+import { HeaderProps } from "./types";
 
-export const Container = styled.div`
+export const Container = styled.div<HeaderProps>`
   height: 10rem;
   display: flex;
   align-items: center;
   padding: 0 5%;
   background-color: ${theme.colors.turistandoBlue};
-  box-shadow: 0 0 20rem 3rem;
+  box-shadow: ${({ boxShadow }) => boxShadow};
   position: relative;
 
   > svg {
-    color: ${theme.colors.tuistandoYellow};
+    color: ${theme.colors.turistandoYellow};
     width: 3rem;
     height: 3rem;
     cursor: pointer;
@@ -50,8 +51,22 @@ export const Ul = styled.ul`
       transform: scale(1.1);
     }
 
+    p {
+      color: ${theme.colors.turistandoYellow};
+      font-size: ${theme.font.sizes.medium};
+      font-family: ${theme.font.family.roboto};
+      font-weight: ${theme.font.weight.bold};
+      transition: 0.3s;
+      :hover {
+        color: red;
+        opacity: 0.7;
+        background-color: transparent;
+        border-color: currentcolor;
+      }
+    }
+
     a {
-      color: ${theme.colors.tuistandoYellow};
+      color: ${theme.colors.turistandoYellow};
       font-size: ${theme.font.sizes.medium};
       font-family: ${theme.font.family.roboto};
       font-weight: ${theme.font.weight.bold};
@@ -64,7 +79,7 @@ export const Ul = styled.ul`
         border-color: currentcolor;
       }
       svg {
-        color: ${theme.colors.tuistandoYellow};
+        color: ${theme.colors.turistandoYellow};
         width: 3rem;
         height: 100%;
         cursor: pointer;

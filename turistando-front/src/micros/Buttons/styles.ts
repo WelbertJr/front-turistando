@@ -7,8 +7,8 @@ export const Button = styled.button<ButtonsProps>`
   width: 100%;
   align-items: center;
   justify-content: center;
-  height: 5rem;
-  background-color: ${theme.colors.tuistandoYellow};
+  min-height: 5rem;
+  background-color: ${theme.colors.turistandoYellow};
   color: ${theme.colors.turistandoBlue};
   font-family: ${theme.font.family.roboto};
   font-weight: ${theme.font.weight.bold};

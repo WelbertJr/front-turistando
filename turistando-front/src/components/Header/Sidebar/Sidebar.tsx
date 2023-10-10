@@ -6,6 +6,8 @@ import { SidebarProps } from "./types";
 import theme from "../../../styles/theme";
 import { AuthenticationContext } from "../../../utils/contexts/isAuthenticated";
 import { GiExitDoor } from "react-icons/gi";
+import { IoIosBuild } from "react-icons/io";
+import { RiNewspaperLine } from "react-icons/ri";
 import { useContext } from "react";
 
 export const Sidebar = ({ active }: SidebarProps) => {
@@ -16,14 +18,11 @@ export const Sidebar = ({ active }: SidebarProps) => {
   const authContext = useContext(AuthenticationContext);
 
   const handleLogout = () => {
-    // Remova os dados da sessionStorage
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("password");
     if (authContext) {
-      // Remova os dados do contexto de autenticação
       authContext.setUser(null);
     }
-    // Redirecione o usuário para a página inicial
     navigate("/");
   };
   const handleLogin = () => {
@@ -34,13 +33,33 @@ export const Sidebar = ({ active }: SidebarProps) => {
 
   return (
     <S.Container>
-      <FaTimes onClick={closeSidebar} color={theme.colors.tuistandoYellow} />
+      <FaTimes onClick={closeSidebar} color={theme.colors.turistandoYellow} />
       <S.Content>
-        <SidebarItem Icon={FaHome} text="Home" onClick={() => navigate("/")} />
+        {hasSessionData ? null : (
+          <SidebarItem
+            Icon={FaHome}
+            text="Home"
+            onClick={() => navigate("/")}
+          />
+        )}
         {hasSessionData ? (
-          <SidebarItem Icon={GiExitDoor} text="Logout" onClick={handleLogout} />
+          <SidebarItem Icon={GiExitDoor} text="Sair" onClick={handleLogout} />
         ) : (
-          <SidebarItem Icon={FaUserAlt} text="Login" onClick={handleLogin} />
+          <SidebarItem Icon={FaUserAlt} text="Entrar" onClick={handleLogin} />
+        )}
+        {hasSessionData ? null : (
+          <SidebarItem
+            Icon={IoIosBuild}
+            text="Administrativo"
+            onClick={() => navigate("/adminLogin")}
+          />
+        )}
+        {hasSessionData ? null : (
+          <SidebarItem
+            Icon={RiNewspaperLine}
+            text="Cadastre-se"
+            onClick={() => navigate("/register")}
+          />
         )}
       </S.Content>
     </S.Container>

@@ -8,7 +8,7 @@ export const Container = styled.div`
   font-family: ${theme.font.family.roboto};
   font-size: ${theme.font.sizes.large};
   font-weight: ${theme.font.weight.regular};
-  color: ${theme.colors.tuistandoYellow};
+  color: ${theme.colors.turistandoYellow};
   padding: ${theme.spacings.xsmall};
   cursor: pointer;
   border-radius: ${theme.spacings.xsmall};

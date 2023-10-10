@@ -10,6 +10,7 @@ export const Container = styled.div`
   background-color: ${theme.colors.white};
   @media (max-width: 999px) {
     width: 100%;
+    justify-content: inherit;
   }
 `;
 
@@ -30,6 +31,9 @@ export const Form = styled.form`
     font-weight: ${theme.font.weight.bold};
     font-size: ${theme.font.sizes.xxlarge};
     margin-bottom: ${theme.spacings.xlarge};
+    @media (max-width: 350px) {
+      font-size: ${theme.font.sizes.large};
+    }
   }
 
   @media (max-width: 999px) {

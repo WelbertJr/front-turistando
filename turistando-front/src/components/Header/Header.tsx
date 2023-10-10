@@ -10,8 +10,10 @@ import { AuthenticationContext } from "../../utils/contexts/isAuthenticated";
 
 export const Header = ({
   headerLinkInicio = "Início",
-  headerLinkLogin = "Login",
+  headerLinkLogin = "Entrar",
   headerLinkAdmin = "Administrativo",
+  headerLinkRegister = "Cadastre-se",
+  boxShadow,
 }: HeaderProps) => {
   const navigate = useNavigate();
   const [sidebar, setSidebar] = useState(false);
@@ -20,35 +22,53 @@ export const Header = ({
   const authContext = useContext(AuthenticationContext);
 
   const handleLogout = () => {
-    // Remova os dados da sessionStorage
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("password");
     if (authContext) {
-      // Remova os dados do contexto de autenticação
       authContext.setUser(null);
     }
-    // Redirecione o usuário para a página inicial
     navigate("/");
   };
   const hasSessionData =
     sessionStorage.getItem("email") && sessionStorage.getItem("password");
   return (
-    <S.Container>
+    <S.Container boxShadow={boxShadow}>
       <FaBars onClick={showSiderbar} />
       {sidebar && <Sidebar active={setSidebar} />}
       <S.Nav>
-        <a href="/">
-          <Image
-            src="src/assets/imgs/turistando-logo.png"
-            alt="Logo Turistando"
-            id="ImageLogo"
-          />
-        </a>
+        {hasSessionData ? (
+          <a href="/loggedPage">
+            <Image
+              src="src/assets/imgs/turistando-logo.png"
+              alt="Logo Turistando"
+              id="ImageLogo"
+            />
+          </a>
+        ) : (
+          <a href="/">
+            <Image
+              src="src/assets/imgs/turistando-logo.png"
+              alt="Logo Turistando"
+              id="ImageLogo"
+            />
+          </a>
+        )}
         <S.Ul>
-          {headerLinkAdmin !== null && (
+          {hasSessionData ? null : (
             <li>
-              <a href="/adminLogin">{headerLinkAdmin}</a>
+              <a href="/register">{headerLinkRegister}</a>
             </li>
+          )}
+          {hasSessionData ? (
+            <li>
+              <a href="/adminPage">{headerLinkAdmin}</a>
+            </li>
+          ) : (
+            headerLinkAdmin !== null && (
+              <li>
+                <a href="/adminLogin">{headerLinkAdmin}</a>
+              </li>
+            )
           )}
           {headerLinkInicio !== null && (
             <li>
@@ -64,6 +84,7 @@ export const Header = ({
           )}
           {hasSessionData && (
             <li>
+              <p>Sair</p>
               <a onClick={handleLogout}>{<GiExitDoor />}</a>
             </li>
           )}

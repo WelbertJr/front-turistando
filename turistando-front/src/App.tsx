@@ -8,15 +8,25 @@ import { RegistrationPage } from "./Pages/RegistrationPage/RegistrationPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthenticationProvider } from "./utils/contexts/isAuthenticated";
 import { ProtectedRoute } from "./utils/functions/ProtectedRoute";
+import { LoggedPage } from "./Pages/LoggedPage/LoggedPage";
 
 function App() {
   return (
     <AuthenticationProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<HomePage />} />
           <Route path="*" element={<ErrorPage404 />} />
+          <Route path="/error401" element={<ErrorPage401 />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/loggedPage"
+            element={
+              <ProtectedRoute>
+                <LoggedPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/adminLogin" element={<AdminLogin />} />
           <Route
             path="/adminPage"
@@ -26,8 +36,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/error401" element={<ErrorPage401 />} />
-          <Route path="/cadastro" element={<RegistrationPage />} />
+          <Route path="/register" element={<RegistrationPage />} />
         </Routes>
       </Router>
     </AuthenticationProvider>

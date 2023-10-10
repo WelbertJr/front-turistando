@@ -38,9 +38,17 @@ export const Form = styled.form`
     font-family: ${theme.font.family.merriweather};
     font-weight: ${theme.font.weight.bold};
     font-size: ${theme.font.sizes.xxlarge};
-    margin-bottom: ${theme.spacings.xhuge};
+    margin-bottom: 10%;
   }
   @media (max-width: 400px) {
     width: 90%;
+  }
+`;
+
+export const ContainerRegistration = styled.div`
+  display: flex;
+  @media (max-width: 310px) {
+    align-items: center;
+    flex-direction: column;
   }
 `;
